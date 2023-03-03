@@ -1,5 +1,7 @@
 package model;
 
+import javax.naming.NamingEnumeration;
+
 public class Student
 {
     //1. variables
@@ -34,19 +36,13 @@ public class Student
         return faculty;
     }
 
-    public void setSt_ID(long st_ID) {
-        this.st_ID = st_ID;
+    public void setName(String inputName) {
+        if(inputName.matches("[A-ŽĪĶĻŠČ]")){
+            name = inputName;
+        } else {
+            name = "Unknown";
+        }
+
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
 }
