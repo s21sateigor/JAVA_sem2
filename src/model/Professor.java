@@ -1,9 +1,18 @@
+package model;
+
 public class Professor
 {
-    long p_ID;
-    String name;
-    String surname;
-    String degree;
+    private long p_ID;
+    private String name;
+    private String surname;
+    private String degree;
+
+    public Professor(long p_ID, String name, String surname, String degree){
+        this.p_ID = p_ID;
+        this.name = name;
+        this.surname = surname;
+        this.degree = degree;
+    }
 
     public long getP_ID() {
         return p_ID;

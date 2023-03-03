@@ -1,3 +1,5 @@
+package service;
+
 public class ModelVerification
 {
     public void isModelIsValid(int value){
