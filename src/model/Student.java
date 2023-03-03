@@ -5,23 +5,37 @@ import javax.naming.NamingEnumeration;
 public class Student
 {
     //1. variables
-    private long st_ID;
+    private long id;
     private String name;
     private String surname;
     private Faculty faculty;
+    private String personCode;
 
+    private static long studentCounter = 0;
 
     //constructors
-    public Student(long st_ID, String name, String surname){
-        this.st_ID = st_ID;
-        this.name = name;
-        this.surname = surname;
+    //no-args constructor
+    public Student(){
+        setId();
+        setName("Unknown");
+        setSurname("Unknown");
+        setFaculty(Faculty.other);
+        setPersonCode("000000-00000");
     }
+    //args constructor
+    public Student(String name, String surname, Faculty faculty, String personCode){
+        setId();
+        setName(name);
+        setSurname(surname);
+        setFaculty(faculty);
+        setPersonCode(personCode);
+    }
+
 
     //getters and setters
 
-    public long getSt_ID() {
-        return st_ID;
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -36,13 +50,41 @@ public class Student
         return faculty;
     }
 
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPersonCode() {
+        return personCode;
+    }
+
+    public void setId(){
+        id = studentCounter;
+        studentCounter++;
+    }
+
     public void setName(String inputName) {
-        if(inputName.matches("[A-ŽĪĶĻŠČ]")){
+        if(inputName != null && inputName.matches("[A-ŽĪĶĻŠČ]")){
             name = inputName;
         } else {
             name = "Unknown";
         }
+    }
 
+    public void setPersonCode(String inputPersonCode){
+        if(inputPersonCode != null && inputPersonCode.matches("[0-9]{6}[-][0-9]{5}")){
+            personCode = inputPersonCode;
+        } else {
+            personCode = "000000-00000";
+        }
+    }
+
+    public void setFaculty(Faculty inputFaculty){
+        if(inputFaculty != null){
+            faculty = inputFaculty;
+        } else {
+            faculty = Faculty.other;
+        }
     }
 
 }
