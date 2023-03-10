@@ -8,13 +8,20 @@ public class Course {
     private CourseGradeType type; //not null
     private Professor professor; //not null
 
-    public Course(String title, int creditPoints, CourseGradeType type, Professor professor){
+    public Course()
+    {
+        setId();
+        setTitle("Unknown");
+        setCreditPoints(0);
+        setType(CourseGradeType.other);
+        setProfessor(new Professor());
+    }
+    public Course(String title, int creditPoints, CourseGradeType type, Professor professor) {
         setId();
         setTitle(title);
         setCreditPoints(creditPoints);
         setType(type);
         setProfessor(professor);
-
     }
     private static long courseCounter = 12000;
 
@@ -75,12 +82,10 @@ public class Course {
         }
     }
 
-
-
-
-
-    //3.constructors
-    //4. toString
+    public String toString()
+    {
+        return "" + id + ": " + title + " (" + creditPoints + ") " + type + ", " +professor.getName() + " " + professor.getSurname();
+    }
     //5. additional functions
 
 }
