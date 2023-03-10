@@ -1,48 +1,90 @@
 package model;
 
-public class Professor
-{
-    private long p_ID;
+public class Professor {
+//1.variables
+
+    private long id;
     private String name;
     private String surname;
-    private String degree;
-
-    public Professor(long p_ID, String name, String surname, String degree){
-        this.p_ID = p_ID;
-        this.name = name;
-        this.surname = surname;
-        this.degree = degree;
+    private Degree degree;
+    private static long professorCounter = 10000;
+    //2. getters and setters
+    public long getId() {
+        return id;
     }
-
-    public long getP_ID() {
-        return p_ID;
-    }
-
-    public void setP_ID(long p_ID) {
-        this.p_ID = p_ID;
-    }
-
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSurname() {
         return surname;
     }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getDegree() {
+    public Degree getDegree() {
         return degree;
     }
 
-    public void setDegree(String degree) {
-        this.degree = degree;
+    public void setId() {
+        id = professorCounter;
+        professorCounter++;
     }
+
+
+    public void setName(String inputName) {
+        if(inputName!=null && inputName.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+([ ][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+)?"))
+        {
+            name = inputName;
+        }
+        else
+        {
+            name = "Unknown";
+        }
+    }
+
+    public void setSurname(String inputSurname) {
+        if(inputSurname!=null && inputSurname.matches("[A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+([-][A-ZĒŪĪĻĶĢŠĀŽČŅ]{1}[a-zēūīļķģšāžčņ]+)?"))
+        {
+            surname = inputSurname;
+        }
+        else
+        {
+            surname = "Unknown";
+        }
+    }
+
+
+    public void setDegree(Degree inputDegree) {
+        if(inputDegree!=null) {
+            degree = inputDegree;
+        }
+        else
+        {
+            degree = Degree.other;
+        }
+    }
+
+//3. constructors
+
+    public Professor() {
+
+        setId();
+        setName("Unknown");
+        setSurname("Unknown");
+        setDegree(Degree.other);
+    }
+    public Professor(String name, String surname, Degree degree) {
+        setId();
+        setName(name);
+        setSurname(surname);
+        setDegree(degree);
+    }
+    //4. toString
+    @Override
+    public String toString() {
+        return "Professor [id=" + id + ", name=" + name + ", surname=" + surname + ", degree=" + degree + "]";
+    }
+
+
+
+
+
+//5. additional functions
 }
