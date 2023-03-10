@@ -26,6 +26,7 @@ public class Course {
     private static long courseCounter = 12000;
 
     //2.getters and setters
+
     public long getId() {
         return id;
     }
