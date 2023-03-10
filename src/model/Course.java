@@ -2,17 +2,18 @@ package model;
 
 public class Course
 {
-    long c_ID;
-    String title;
-    int creditPoints;
-    Professor professor;
+    private long id;
+    private String title; //only letters, digits and space
+    private int creditPoints; // min = 1, max = 20
+    private CourseGradeType type; // not null
+    private Professor professor; // not null
 
-    public long getC_ID() {
-        return c_ID;
+    public long getId() {
+        return id;
     }
 
     public void setC_ID(long c_ID) {
-        this.c_ID = c_ID;
+        this.id = id;
     }
 
     public String getTitle() {
@@ -29,13 +30,5 @@ public class Course
 
     public void setCreditPoints(int creditPoints) {
         this.creditPoints = creditPoints;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
     }
 }

@@ -64,7 +64,7 @@ public class Student
     }
 
     public void setName(String inputName) {
-        if(inputName != null && inputName.matches("[A-ŽĪĶĻŠČ]")){
+        if(inputName != null || inputName.matches("[a-z ,.'-]")){
             name = inputName;
         } else {
             name = "Unknown";
