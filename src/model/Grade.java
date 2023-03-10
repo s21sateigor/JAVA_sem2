@@ -2,25 +2,25 @@ package model;
 
 public class Grade
 {
-    long g_ID;
+    long id;
     int value;
     Student student;
     Course course;
 
-    public long getG_ID() {
-        return g_ID;
+    public long getId() {
+        return id;
     }
 
-    public void setG_ID(long g_ID) {
-        this.g_ID = g_ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getValue() {
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setValue(int inputValue) {
+
     }
 
     public Student getStudent() {
