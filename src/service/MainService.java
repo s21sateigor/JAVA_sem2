@@ -14,12 +14,15 @@ import java.util.Arrays;
 
 public class MainService
 {
+    private static ArrayList<Student> allStudentsList = new ArrayList<>();
+    private static ArrayList<Professor> allProfessorList = new ArrayList<>();
+    private static ArrayList<Course> allCoursesList = new ArrayList<>();
+    private static ArrayList<Grade> allGradesList = new ArrayList<>();
+
     public static void main(String[] args) {
 
-        //TODO create 4 arrays and add all elements
-        //TODO using loop print out all elements
 
-        int[] mas = new int[5];
+//        int[] mas = new int[5];
 //        Student[] allStudents = new Student[6];
 //        Professor[] allProfessors = new Professor[6];
 //        Course[] allCourses = new Course[6];
@@ -28,14 +31,14 @@ public class MainService
 
         Student st1 = new Student();
         Student st2 = new Student("Jānis", "Bērziņš", Faculty.ITF, "010702-21555");
-        Student st3 = new Student("Jā251nis", "Bērzi2s", Faculty.TSF, "222222-44414");
+        Student st3 = new Student("Līga", "Bērzi2s", Faculty.TSF, "222222-44414");
 //        Student[] allStudents = {st1, st2, st3};
 //        for(Student student : allStudents){
 //            System.out.println(student);
 //        }
         //kad katru atseviski itereet
 
-        ArrayList<Student> allStudentsList = new ArrayList<>();
+
         allStudentsList.addAll(Arrays.asList(st1, st2, st3));
 
         for(Student student : allStudentsList) {
@@ -51,7 +54,7 @@ public class MainService
 //            System.out.println(professor);
 //        }
 
-        ArrayList<Professor> allProfessorList = new ArrayList<>();
+
         allProfessorList.addAll(Arrays.asList(pr1, pr2, pr3));
 
         for(Professor professor : allProfessorList){
@@ -67,7 +70,7 @@ public class MainService
 //            System.out.println(course);
 //        }
 
-        ArrayList<Course> allCoursesList = new ArrayList<>();
+
         allCoursesList.addAll(Arrays.asList(c1, c2, c3, c4));
         for(Course course: allCoursesList){
             System.out.println(course);
@@ -83,10 +86,57 @@ public class MainService
 //        for(Grade grade : allGrades){
 //            System.out.println(grade);
 //        }
-        ArrayList<Grade> allGradesList = new ArrayList<>();
+
         allGradesList.addAll(Arrays.asList(gr1, gr2, gr3, gr4, gr5));
         for(Grade grade: allGradesList){
             System.out.println(grade);
         }
+
+
+        System.out.println("-------------");
+        for(Student temp: allStudentsList){
+            System.out.println(temp.getName() + ": " + calculateAVGGrade(temp));
+        }
+
+        System.out.println("-----------");
+        for(Course temp: allCoursesList){
+            System.out.println(temp.getTitle() + ": " + calculateAVGCourseGrade(temp));
+        }
+    }
+
+    private static float calculateAVGGrade(Student student){
+        if( student != null){
+            float gradesSum = 0;
+            int gradesCounter = 0;
+            for(Grade grade: allGradesList){
+                if(grade.getStudent().equals(student)){
+                    gradesSum += grade.getGrValue();
+                    gradesCounter++;
+                }
+            }
+            return gradesSum / gradesCounter;
+
+        } else {
+            return 0;
+        }
+
+    }
+
+    private static float calculateAVGCourseGrade(Course course){
+        if( course != null){
+            float gradesSum = 0;
+            int gradesCounter = 0;
+            for(Grade grade: allGradesList){
+                if(grade.getCourse().equals(course)){
+                    gradesSum += grade.getGrValue();
+                    gradesCounter++;
+                }
+            }
+            return gradesSum / gradesCounter;
+
+        } else {
+            return 0;
+        }
+
     }
 }
